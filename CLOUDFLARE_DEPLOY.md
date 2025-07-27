@@ -16,14 +16,21 @@ npx wrangler login
 
 ### 2. 部署到 Cloudflare Pages
 
+#### 使用 npm 脚本部署：
 ```bash
 npm run deploy
 ```
 
-或者直接使用：
-
+#### 或直接使用 wrangler 命令：
 ```bash
+# 首次部署（会创建新项目）
+npx wrangler pages deploy .
+
+# 指定项目名称部署
 npx wrangler pages deploy . --project-name=libretv
+
+# 部署到现有项目
+npx wrangler pages deploy . --project-name=your-existing-project-name
 ```
 
 ### 3. 本地预览（可选）
@@ -71,9 +78,18 @@ npx wrangler telemetry enable
 
 如果部署仍然失败，请检查：
 
-1. 确保已登录 Cloudflare：`npx wrangler whoami`
-2. 检查项目名称是否已存在
-3. 确保所有必要文件都在项目根目录中
+1. **认证问题**：确保已运行 `wrangler login`，可用 `npx wrangler whoami` 验证
+2. **权限问题**：检查 Cloudflare 账户权限
+3. **配置错误**：验证 `wrangler.toml` 文件格式
+4. **环境变量**：在 Cloudflare Dashboard 中设置生产环境变量
+5. **部署命令错误**：
+   - 使用 `wrangler pages deploy` 而不是 `wrangler deploy`
+   - Pages 项目和 Workers 项目使用不同的部署命令
+6. **项目名称**：
+   - 首次部署时 Wrangler 会提示创建新项目
+   - 可以使用 `--project-name` 参数指定项目名称
+   - 后续部署会自动使用相同的项目名称
+7. 确保所有必要文件都在项目根目录中
 
 ## 注意事项
 

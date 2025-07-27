@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon server.mjs",
     "start": "node server.mjs",
-    "deploy": "npx wrangler pages deploy . --project-name=libretv",
+    "deploy": "npx wrangler pages deploy .",
     "preview": "npx wrangler pages dev .",
     "wrangler:login": "npx wrangler login"
   },
