@@ -1,0 +1,64 @@
+# 增强的安全头配置
+/*
+  # 基础安全头
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # 内容安全策略 (根据需要调整)
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https:; font-src 'self' data:; object-src 'none'; media-src 'self' https:; frame-src 'none';
+  
+  # 权限策略
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()
+  
+  # HTTPS 强制 (生产环境启用)
+  # Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# API 代理路径的 CORS 配置
+/proxy/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: Content-Type, Authorization
+  Access-Control-Max-Age: 86400
+  # 限制代理请求大小
+  Content-Length: 10485760
+
+# 静态资源缓存和安全
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+  
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+  
+/libs/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+  
+/image/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# HTML 文件不缓存
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+  
+# 主页不缓存
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+# 敏感文件保护
+/.env*
+  X-Robots-Tag: noindex, nofollow, nosnippet, noarchive
+  
+/package*.json
+  X-Robots-Tag: noindex, nofollow, nosnippet, noarchive
+  
+/*.md
+  X-Robots-Tag: noindex, nofollow, nosnippet, noarchive
