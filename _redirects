@@ -1,0 +1,11 @@
+# 代理路径重定向到 Functions
+/proxy/* /proxy/:splat 200
+
+# 搜索路径重定向
+/s=* /index.html 200
+
+# 播放器路径处理
+/player.html/* /player.html 200
+
+# SPA 路由回退（确保其他路径正常工作）
+/* /index.html 404

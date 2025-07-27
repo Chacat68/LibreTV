@@ -1,0 +1,34 @@
+# 全局头部配置
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# API 代理路径的 CORS 配置
+/proxy/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: Content-Type, Authorization
+  Access-Control-Max-Age: 86400
+
+# 静态资源缓存
+/css/*
+  Cache-Control: public, max-age=31536000
+  
+/js/*
+  Cache-Control: public, max-age=31536000
+  
+/libs/*
+  Cache-Control: public, max-age=31536000
+  
+/image/*
+  Cache-Control: public, max-age=31536000
+
+# HTML 文件不缓存
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  
+# 主页不缓存
+/
+  Cache-Control: no-cache, no-store, must-revalidate
