@@ -9,6 +9,7 @@ pages_build_output_dir = "./"
 DEBUG = "false"
 CACHE_TTL = "86400"
 MAX_RECURSION = "5"
+PASSWORD = "jfy-fkq3mdv5NQA*dep"
 USER_AGENTS_JSON = '["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"]'
 
 # 兼容性标志
